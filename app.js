@@ -70,7 +70,7 @@ app.post('/', function (req, res) {
                     }
                 }]
             };
- 
+
             const jsonData = JSON.stringify(mailchimpData);
 
             //post
