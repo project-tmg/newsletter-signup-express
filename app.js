@@ -50,7 +50,8 @@ app.post('/', function (req, res) {
                     }
                 }],
               });
-
+              console.log("methodType - 1");
+              console.log(response);
               if (response.error_count >= 1 ) {
                   res.sendFile(__dirname + '/failure.html');
               } else {
@@ -79,13 +80,13 @@ app.post('/', function (req, res) {
                 method: "POST",
                 auth: MAPI_KEYB
             };
-            console.log('raw request 2')
+            console.log("methodType - 2");
             const httpsPostRequest = https.request(url, options, function(response) {
                 response.on('data', function(data) {
                     var rawRequestData = JSON.parse(data);
                     console.log(rawRequestData);
                     if (response.statusCode == 200) {
-                        if (response.error_count >= 1) {} {
+                        if (response.error_count >= 1) {
                             res.sendFile(__dirname + '/failure.html');
                         } else {
                             res.sendFile(__dirname + '/success.html');
