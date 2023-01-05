@@ -85,7 +85,11 @@ app.post('/', function (req, res) {
                     var rawRequestData = JSON.parse(data);
                     console.log(rawRequestData);
                     if (response.statusCode == 200) {
-                        res.sendFile(__dirname + '/success.html');
+                        if (response.error_count >= 1) {} {
+                            res.sendFile(__dirname + '/failure.html');
+                        } else {
+                            res.sendFile(__dirname + '/success.html');
+                        }
                     } else {
                         res.sendFile(__dirname + '/failure.html');
                     }
