@@ -84,9 +84,11 @@ app.post('/', function (req, res) {
             const httpsPostRequest = https.request(url, options, function(response) {
                 response.on('data', function(data) {
                     var rawRequestData = JSON.parse(data);
+                    console.log(response);
                     console.log(rawRequestData);
-                    if (response.statusCode == 200) {
-                        if (response.error_count >= 1) {
+                    console.log("error count - " + rawRequestData.error_count);
+                    if (rawRequestData.statusCode == 200) {
+                        if (rawRequestData.error_count >= 1) {
                             res.sendFile(__dirname + '/failure.html');
                         } else {
                             res.sendFile(__dirname + '/success.html');
